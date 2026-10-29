@@ -24,16 +24,16 @@ const FinishLevel = ({ points, currentLevel, onNextLevel, onMainMenu }) => {
     const changeBackground = (level) => {
         let backgroundUrl = '';
         if (level === 'Easy') {
-            backgroundUrl = '/assets/images/easy-level-bg.png';
+            backgroundUrl = '/assets/images/og level.png';
         } else if (level === 'Medium') {
-            backgroundUrl = '/assets/images/medium-level-bg.png';
+            backgroundUrl = '/assets/images/noir level.png';
         } else if (level === 'Hard') {
-            backgroundUrl = '/assets/images/hard-level-bg.png';
+            backgroundUrl = '/assets/images/biohazard level.png';
         } else if (level === 'Final') {
-            backgroundUrl = '/assets/images/final-level-bg.png';
+            backgroundUrl = '/assets/images/sunset level.png';
         }
 
-        document.body.style.backgroundImage = `url(${backgroundUrl})`;
+        document.body.style.backgroundImage = `url("${backgroundUrl}")`;
         document.body.style.backgroundSize = 'cover';
         document.body.style.backgroundPosition = 'center';
     };

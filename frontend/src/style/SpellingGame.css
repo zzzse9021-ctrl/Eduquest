@@ -114,6 +114,8 @@ input {
     border: 2px solid #ccc;
     border-radius: 4px;
     background-color: white;
+    /* Tailwind's base styles make inputs inherit the page's white text. */
+    color: black;
     font-size: 4rem;
     font-family: 'Arial', sans-serif;
     resize: none;

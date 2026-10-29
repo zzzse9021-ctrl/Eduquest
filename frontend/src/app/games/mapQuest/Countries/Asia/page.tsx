@@ -7,7 +7,7 @@ import '../../map_game.css';
 
 
 type Country = 'Afghanistan'|'Bahrain'|'Bangladesh'|'Bhutan'|'Brunei'|'Cambodia'|'China'|'Hong Kong'|'India'|'Indonesia'|'Iran'|'Iraq'|
-                'Japan'|'Jordan'|'Kuwait'|'Krygyzstan'|'Laos'|'Lebanon'|'Macau'|'Malaysia'|'Maldives'|'Mongolia'|'Myanmar'|'Nepal'|
+                'Japan'|'Jordan'|'Kuwait'|'Kyrgyzstan'|'Laos'|'Lebanon'|'Macau'|'Malaysia'|'Maldives'|'Mongolia'|'Myanmar'|'Nepal'|
                 'NorthKorea'|'Oman'|'Pakistan'|'Palestine'|'Philippines'|'Qatar'|'SaudiArabia'|'Singapore'|'SouthKorea'|'SriLanka'|
                 'Syria'|'Taiwan'|'Tajikistan'|'Thailand'|'Timor-Leste'|'Turkmenistan'|'UAE'|'Uzbekistan'|'Vietnam'|'Yemen';
 
@@ -24,7 +24,7 @@ const countryImages: Record<Country, string> = {
   Brunei: '/mapQuest_images/Countries/Asia/Brunei.png',
   Cambodia: '/mapQuest_images/Countries/Asia/Cambodia.png',
   China: '/mapQuest_images/Countries/Asia/China.png',
-  "Hong Kong": '/mapQuest_images/Countries/Asia/Hong_Kong.png',
+  "Hong Kong": '/mapQuest_images/Countries/Asia/HongKong.png',
   India: '/mapQuest_images/Countries/Asia/India.png',
   Indonesia: '/mapQuest_images/Countries/Asia/Indonesia.png',
   Iran: '/mapQuest_images/Countries/Asia/Iran.png',
@@ -32,7 +32,7 @@ const countryImages: Record<Country, string> = {
   Japan: '/mapQuest_images/Countries/Asia/Japan.png',
   Jordan: '/mapQuest_images/Countries/Asia/Jordan.png',
   Kuwait: '/mapQuest_images/Countries/Asia/Kuwait.png',
-  Krygyzstan: '/mapQuest_images/Countries/Asia/Krygyzstan.png',
+  Kyrgyzstan: '/mapQuest_images/Countries/Asia/Kygyzstan.png',
   Laos: '/mapQuest_images/Countries/Asia/Laos.png',
   Lebanon: '/mapQuest_images/Countries/Asia/Lebanon.png',
   Macau: '/mapQuest_images/Countries/Asia/Macau.png',
@@ -53,7 +53,7 @@ const countryImages: Record<Country, string> = {
   SriLanka: '/mapQuest_images/Countries/Asia/SriLanka.png',
   Syria: '/mapQuest_images/Countries/Asia/Syria.png',
   Taiwan: '/mapQuest_images/Countries/Asia/Taiwan.png',
-  Tajikistan: '/mapQuest_images/Countries/Asia/Tajikistan.png',
+  Tajikistan: '/mapQuest_images/Countries/Asia/Tajikstan.png',
   Thailand: '/mapQuest_images/Countries/Asia/Thailand.png',
   "Timor-Leste": '/mapQuest_images/Countries/Asia/Timor-Leste.png',
   Turkmenistan: '/mapQuest_images/Countries/Asia/Turkmenistan.png',
@@ -70,7 +70,7 @@ const shuffleArray = (array: Country[]): Country[] => {
 const AsiaMapGame: React.FC = () => {
   const countries: Country[] = ["Afghanistan", "Bahrain", "Bangladesh", "Bhutan", "Brunei", "Cambodia", "China", 
     "Hong Kong", "India", "Indonesia", "Iran", "Iraq", "Japan", "Jordan", "Kuwait", 
-    "Krygyzstan", "Laos", "Lebanon", "Macau", "Malaysia", "Maldives", "Mongolia", 
+    "Kyrgyzstan", "Laos", "Lebanon", "Macau", "Malaysia", "Maldives", "Mongolia", 
     "Myanmar", "Nepal", "NorthKorea", "Oman", "Pakistan", "Palestine", "Philippines", 
     "Qatar", "SaudiArabia", "Singapore", "SouthKorea", "SriLanka", "Syria", "Taiwan", 
     "Tajikistan", "Thailand", "Timor-Leste", "Turkmenistan", "UAE", "Uzbekistan", 

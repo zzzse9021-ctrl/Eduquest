@@ -178,22 +178,23 @@ const CrosswordBoard = ({ difficulty }) => {
 
     return newBlockedGrid;
   };
+  // The voice comes from the local LMNT backend (backend/api.py). When it
+  // isn't running, return null so the game keeps working without audio.
   const generateWordsAudio = async (word) => {
-    const audioBlob = fetch('http://127.0.0.1:8000/wordQuest', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ word: word }),
-    }).then((data) => {
-      return data.blob();
-    });
-    // Return the audio buffer
-    // const audioBlob = new Blob([synthesis.audio], { type: 'audio/wav' });
-
-    // Return the audio blob
-    return audioBlob;
-    // return synthesis.audio;
+    try {
+      const response = await fetch('http://127.0.0.1:8000/wordQuest', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ word: word }),
+      });
+      if (!response.ok) return null;
+      return await response.blob();
+    } catch (error) {
+      console.log('Word audio unavailable:', error.message);
+      return null;
+    }
   };
 
   const generateWords = useCallback(async (word) => {
@@ -214,7 +215,7 @@ const CrosswordBoard = ({ difficulty }) => {
     // Play audio if available
     if (newQuestion.audioUrl) {
       const audio = new Audio(newQuestion.audioUrl);
-      audio.play();
+      audio.play().catch(() => {});
     }
   };
   const isSpaceAvailable = (

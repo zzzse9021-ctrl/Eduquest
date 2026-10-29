@@ -1,0 +1,17 @@
+node_modules/
+.next/
+out/
+.vercel/
+*.tsbuildinfo
+
+.env*
+*.pem
+
+__pycache__/
+.venv/
+venv/
+
+.DS_Store
+
+# Unused phone originals; they carry location metadata.
+*.HEIC

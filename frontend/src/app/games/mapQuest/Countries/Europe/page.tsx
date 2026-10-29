@@ -8,7 +8,7 @@ import '../../map_game.css';
 
 type Country = 'Albania' | 'Andorra' | 'Armenia' | 'Austria' | 'Azerbaijan' | 'Belarus' | 'Belgium'
                   |'Bosnia'|'Bulgaria'|'Croatia'|'Cyprus'|'Czechia'|'Denmark'|'Estonia'|'Finland'|
-                  'France'|'Georgia'|'Germany'|'Greece'|'Gribraltar'|'Hungary'|'Iceland'|'Ireland'|
+                  'France'|'Georgia'|'Germany'|'Greece'|'Gibraltar'|'Hungary'|'Iceland'|'Ireland'|
                   'Italy'|'Kosovo'|'Latvia'|'Lithuania'|'Luxembourg'|'Moldova'|'Monaco'|'Montenegro'|
                   'Netherlands'|'NorthMacedonia'|'Norway'|'Poland'|'Portugal'|'Romania'|'Russia'|'Serbia'|
                   'Slovakia'|'Slovenia'|'Spain'|'Svalbard'|'Sweden'|'Switzerland'|'Turkiye'|'Ukraine'|'UnitedKingdom';
@@ -38,7 +38,7 @@ const countryImages: Record<Country, string> = {
   Georgia: '/mapQuest_images/Countries/Europe/Georgia.png',
   Germany: '/mapQuest_images/Countries/Europe/Germany.png',
   Greece: '/mapQuest_images/Countries/Europe/Greece.png',
-  Gribraltar: '/mapQuest_images/Countries/Europe/Gribraltar.png',
+  Gibraltar: '/mapQuest_images/Countries/Europe/Gribaltar.png',
   Hungary: '/mapQuest_images/Countries/Europe/Hungary.png',
   Iceland: '/mapQuest_images/Countries/Europe/Iceland.png',
   Ireland: '/mapQuest_images/Countries/Europe/Ireland.png',
@@ -76,7 +76,7 @@ const shuffleArray = (array: Country[]): Country[] => {
 const EuropeMapGame: React.FC = () => {
   const countries: Country[] = ["Albania", "Andorra", "Armenia", "Austria", "Azerbaijan", "Belarus", "Belgium",
     "Bosnia", "Bulgaria", "Croatia", "Cyprus", "Czechia", "Denmark", "Estonia",
-    "Finland", "France", "Georgia", "Germany", "Greece", "Gribraltar", "Hungary",
+    "Finland", "France", "Georgia", "Germany", "Greece", "Gibraltar", "Hungary",
     "Iceland", "Ireland", "Italy", "Kosovo", "Latvia", "Lithuania", "Luxembourg",
     "Moldova", "Monaco", "Montenegro", "Netherlands", "NorthMacedonia", "Norway",
     "Poland", "Portugal", "Romania", "Russia", "Serbia", "Slovakia", "Slovenia",

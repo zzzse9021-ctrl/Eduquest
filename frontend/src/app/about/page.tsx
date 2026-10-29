@@ -12,7 +12,7 @@ import Statistics from '@/components/Statistics';
 const teamMembers = [
   {
     name: 'Payamullah Erfan',
-    image: '/pictures/Payam.jpg',
+    image: '/Pictures/Payam.jpg',
     title: 'Project Manager',
   },
   {

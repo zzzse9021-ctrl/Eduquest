@@ -21,7 +21,10 @@ import { randomWordGenerator } from '../utils/WordsGenerator';
 
 import FinishLevel from './FinishLevel';
 
-window.Buffer = BufferPolyfill.Buffer;
+// Next.js also renders this module on the server, where there is no window.
+if (typeof window !== 'undefined') {
+  window.Buffer = BufferPolyfill.Buffer;
+}
 
 const wordListMock = mediumWords;
 
@@ -106,16 +109,16 @@ const SpellingGame = ({ level, levelwordList, onRestart, onFinishLevel }) => {
   const changeBackground = (level) => {
     let backgroundUrl = '';
     if (level === 'Easy') {
-      backgroundUrl = '/assets/images/easy-level-bg.png';
+      backgroundUrl = '/assets/images/og level.png';
     } else if (level === 'Medium') {
-      backgroundUrl = '/assets/images/medium-level-bg.png';
+      backgroundUrl = '/assets/images/noir level.png';
     } else if (level === 'Hard') {
-      backgroundUrl = '/assets/images/hard-level-bg.png';
+      backgroundUrl = '/assets/images/biohazard level.png';
     } else if (level === 'Final') {
-      backgroundUrl = '/assets/images/final-level-bg.png';
+      backgroundUrl = '/assets/images/sunset level.png';
     }
 
-    document.body.style.backgroundImage = `url(${backgroundUrl})`;
+    document.body.style.backgroundImage = `url("${backgroundUrl}")`;
     document.body.style.backgroundSize = 'cover';
     document.body.style.backgroundPosition = 'center';
   };
@@ -190,21 +193,21 @@ const SpellingGame = ({ level, levelwordList, onRestart, onFinishLevel }) => {
     }));
   }, [currentWord]);
 
+  // The voice comes from the local LMNT backend (backend/api.py). When it
+  // isn't running, return null so the game keeps working without audio.
   const generateWordsAudio = async (word) => {
     try {
-      const audioBlob = fetch('http://127.0.0.1:8000/wordQuest', {
+      const response = await fetch('http://127.0.0.1:8000/wordQuest', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(word),
-      }).then((rawData) => {
-        return rawData.blob();
+        body: JSON.stringify({ word: word }),
       });
-      return audioBlob;
-      // return synthesis.audio;
+      if (!response.ok) return null;
+      return await response.blob();
     } catch (error) {
-      console.error('Error generating audio:', error);
+      console.log('Word audio unavailable:', error.message);
       return null;
     }
   };
@@ -227,7 +230,7 @@ const SpellingGame = ({ level, levelwordList, onRestart, onFinishLevel }) => {
     // Play audio if available
     if (newQuestion.audioUrl) {
       const audio = new Audio(newQuestion.audioUrl);
-      audio.play();
+      audio.play().catch(() => {});
     }
   };
 
@@ -628,7 +631,7 @@ const SpellingGame = ({ level, levelwordList, onRestart, onFinishLevel }) => {
 
         {/* <img 
     id="Moski" 
-    src={`${process.env.PUBLIC_URL}/assets/images/oski.png`} 
+    src="/assets/images/oski.png" 
     alt="Moski" 
     style={{
         bottom: `${userState.characterPos[1]}rem`,

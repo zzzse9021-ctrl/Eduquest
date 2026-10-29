@@ -11,7 +11,7 @@ const ShowCharacter = (xPos, yPos) => {
     return (
         <>
         <img 
-            src={`${process.env.PUBLIC_URL}/assets/images/oski.png`} 
+            src="/assets/images/oski.png" 
             style={{position: 'absolute',
                     left: `${position.x}rem`,  
                     bottom: `${position.y}rem`}}

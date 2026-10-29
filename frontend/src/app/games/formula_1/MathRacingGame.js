@@ -22,23 +22,25 @@ const generateQuestionAudio = async (questionText) => {
   //   // Initialize speech synthesis
   //   const speech = new Speech(apiKey);
   //   // Convert mathematical symbols to spoken words
+  // The voice comes from the local LMNT backend (backend/api.py). When it
+  // isn't running, return null so the question still shows without audio.
   try {
     const spokenText = questionText
       .replace('+', 'plus')
       .replace('-', 'minus')
       .replace('?', '');
-    const audio = fetch(`http://127.0.0.1:8000/formula_1`, {
+    const response = await fetch(`http://127.0.0.1:8000/formula_1`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ question: spokenText }),
-    }).then((response) => {
-      return response.blob();
     });
-    return audio;
+    if (!response.ok) return null;
+    return await response.blob();
   } catch (error) {
-    console.log(error);
+    console.log('Question audio unavailable:', error.message);
+    return null;
   }
 
   //   // Synthesize speech
@@ -192,7 +194,7 @@ const useMathRacing = () => {
   const playQuestionAudio = useCallback(() => {
     if (gameState.currentQuestion?.audioUrl && gameState.soundOn) {
       const audio = new Audio(gameState.currentQuestion.audioUrl);
-      audio.play();
+      audio.play().catch(() => {});
     }
   }, [gameState.currentQuestion, gameState.soundOn]);
 
@@ -219,7 +221,8 @@ const useMathRacing = () => {
           // Play audio if available
           if (newQuestion.audioUrl) {
             const audio = new Audio(newQuestion.audioUrl);
-            audio.play();
+            // Browsers can block autoplay; the replay button still works.
+            audio.play().catch(() => {});
           }
         };
 
